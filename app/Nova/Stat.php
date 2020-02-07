@@ -7,6 +7,7 @@ use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Number;
+use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Http\Requests\NovaRequest;
@@ -48,10 +49,28 @@ class Stat extends Resource
             ID::make()->onlyOnForms(),
             BelongsTo::make('Player'),
             Date::make('Date'),
-            Number::make('Inning'),
+            Select::make('Inning')->options([
+                '1' => 1,
+                '2' => 2,
+                '3' => 3,
+                '4' => 4,
+                '5' => 5,
+                '6' => 6,
+                '7' => 7,
+                '8' => 8,
+                '9' => 9,
+            ]),
             Number::make('Balls'),
             Number::make('Strikes'),
-            Text::make('Outcome'),
+            Select::make('Outcome')->options([
+                'Single' => 'Single',
+                'Double' => 'Double',
+                'Triple' => 'Triple',
+                'Home Run' => 'Home Run',
+                'Walk' => 'Walk',
+                'Strikeout' => 'Strikeout',
+                'Hit by Pitch' => 'Hit by Pitch',
+            ]),
             Textarea::make('Notes'),
         ];
     }
